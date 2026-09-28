@@ -103,11 +103,13 @@ class Program
 
     static void ExibirSituacao(double media)
     {
-        if (media >= MEDIA_APROVACAO)
-            Console.WriteLine("Situação: Aprovado");
-        else if (media >= MEDIA_RECUPERACAO)
-            Console.WriteLine("Situação: Recuperação");
-        else
-            Console.WriteLine("Situação: Reprovado");
+        string situacao = media switch
+        {
+            >= MEDIA_APROVACAO => "Aprovado",
+            >= MEDIA_RECUPERACAO => "Recuperação",
+            _ => "Reprovado"
+        };
+
+        Console.WriteLine($"Situação: {situacao}");
     }
-}
+}   
